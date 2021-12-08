@@ -249,6 +249,7 @@ class EasyLoading {
   static Future<void> show({
     String? status,
     Widget? indicator,
+    Widget? customContent,
     EasyLoadingMaskType? maskType,
     bool? dismissOnTap,
   }) {
@@ -258,6 +259,7 @@ class EasyLoading {
       maskType: maskType,
       dismissOnTap: dismissOnTap,
       w: w,
+      customContent: customContent,
     );
   }
 
@@ -307,6 +309,7 @@ class EasyLoading {
     Duration? duration,
     EasyLoadingMaskType? maskType,
     bool? dismissOnTap,
+    Widget? customContent,
   }) {
     Widget w = _instance.successWidget ??
         Icon(
@@ -320,6 +323,7 @@ class EasyLoading {
       maskType: maskType,
       dismissOnTap: dismissOnTap,
       w: w,
+      customContent: customContent,
     );
   }
 
@@ -329,6 +333,7 @@ class EasyLoading {
     Duration? duration,
     EasyLoadingMaskType? maskType,
     bool? dismissOnTap,
+    Widget? customContent,
   }) {
     Widget w = _instance.errorWidget ??
         Icon(
@@ -342,6 +347,7 @@ class EasyLoading {
       maskType: maskType,
       dismissOnTap: dismissOnTap,
       w: w,
+      customContent: customContent,
     );
   }
 
@@ -351,6 +357,7 @@ class EasyLoading {
     Duration? duration,
     EasyLoadingMaskType? maskType,
     bool? dismissOnTap,
+    Widget? customContent,
   }) {
     Widget w = _instance.infoWidget ??
         Icon(
@@ -364,6 +371,7 @@ class EasyLoading {
       maskType: maskType,
       dismissOnTap: dismissOnTap,
       w: w,
+      customContent: customContent,
     );
   }
 
@@ -415,6 +423,7 @@ class EasyLoading {
   /// show [status] [duration] [toastPosition] [maskType]
   Future<void> _show({
     Widget? w,
+    Widget? customContent,
     String? status,
     Duration? duration,
     EasyLoadingMaskType? maskType,
@@ -472,6 +481,7 @@ class EasyLoading {
       maskType: maskType,
       dismissOnTap: dismissOnTap,
       completer: completer,
+      customContent: customContent,
     );
     completer.future.whenComplete(() {
       _callback(EasyLoadingStatus.show);

@@ -36,6 +36,7 @@ class EasyLoadingContainer extends StatefulWidget {
   final EasyLoadingMaskType? maskType;
   final Completer<void>? completer;
   final bool animation;
+  final Widget? customContent;
 
   const EasyLoadingContainer({
     Key? key,
@@ -46,6 +47,7 @@ class EasyLoadingContainer extends StatefulWidget {
     this.maskType,
     this.completer,
     this.animation = true,
+    this.customContent,
   }) : super(key: key);
 
   @override
@@ -163,10 +165,11 @@ class EasyLoadingContainerState extends State<EasyLoadingContainer>
           animation: _animationController,
           builder: (BuildContext context, Widget? child) {
             return EasyLoadingTheme.loadingAnimation.buildWidget(
-              _Indicator(
-                status: _status,
-                indicator: widget.indicator,
-              ),
+              widget.customContent ??
+                  _Indicator(
+                    status: _status,
+                    indicator: widget.indicator,
+                  ),
               _animationController,
               _alignment,
             );
